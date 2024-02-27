@@ -10,8 +10,8 @@ export class DownloadXslxService {
   constructor(private http: HttpClient) {}
 
   executeDownload(url: string): Observable<Blob> {
-    //return this.http.get<Blob>(`${env.api}${url}`, {
-      return this.http.get<Blob>(`/api/${url}`, {
+      return this.http.get<Blob>(`${env.api}${url}`, {
+      //return this.http.get<Blob>(`/api/${url}`, {
       responseType: "blob" as "json",
     });
   }

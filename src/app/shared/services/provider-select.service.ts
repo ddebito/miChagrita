@@ -14,8 +14,8 @@ export class ProviderSelectService {
   constructor(private _http: HttpClient) {}
 
   listSelectProviders(): Observable<SelectAutoComplete[]> {
-    //const requestUrl = `${env.api}${endpoint.LIST_SELECT_PROVIDERS}`;
-    const requestUrl = `/api/${endpoint.LIST_SELECT_PROVIDERS}`;
+    const requestUrl = `${env.api}${endpoint.LIST_SELECT_PROVIDERS}`;
+    //const requestUrl = `/api/${endpoint.LIST_SELECT_PROVIDERS}`;
     return this._http
       .get(requestUrl)
       .pipe(map((resp: BaseResponse) => resp.data));

@@ -14,8 +14,8 @@ export class CategorySelectService {
   constructor(private _http: HttpClient) {}
 
   listSelectCategories(): Observable<SelectAutoComplete[]> {
-    //const requestUrl = `${env.api}${endpoint.LIST_SELECT_CATEGORIES}`;
-    const requestUrl = `/api/${endpoint.LIST_SELECT_CATEGORIES}`;
+    const requestUrl = `${env.api}${endpoint.LIST_SELECT_CATEGORIES}`;
+    //const requestUrl = `/api/${endpoint.LIST_SELECT_CATEGORIES}`;
     return this._http.get(requestUrl).pipe(
       map((resp: BaseResponse) => {
         return resp.data;

@@ -17,7 +17,7 @@ export class CategoryService {
   constructor(private _http: HttpClient, private _alert: AlertService) {}
 
   GetAll(size, sort, order, page, getInputs): Observable<BaseResponse> {
-    const requestUrl = `/api/${endpoint.LIST_CATEGORIES}?records=${size}&sort=${sort}&order=${order}&numPage=${page + 1}${getInputs}`;
+    const requestUrl = `${env.api}${endpoint.LIST_CATEGORIES}?records=${size}&sort=${sort}&order=${order}&numPage=${page + 1}${getInputs}`;
 
     return this._http.get<BaseResponse>(requestUrl).pipe(
       map((data: BaseResponse) => {
@@ -42,8 +42,8 @@ export class CategoryService {
   }
 
   CategoryRegister(category: CategoryRequest): Observable<BaseResponse> {
-    //const requestUrl = `${env.api}
-    const requestUrl = `/api/${endpoint.CATEGORY_REGISTER}`;
+    const requestUrl = `${env.api}${endpoint.CATEGORY_REGISTER}`;
+    //const requestUrl = `/api/${endpoint.CATEGORY_REGISTER}`;
     return this._http.post(requestUrl, category).pipe(
       map((resp: BaseResponse) => {
         return resp;
@@ -64,8 +64,8 @@ export class CategoryService {
     CategoryId: number,
     category: CategoryRequest
   ): Observable<BaseResponse> {
-    //const requestUrl = `${env.api}${endpoint.CATEGORY_EDIT}${CategoryId}`;
-    const requestUrl = `/api/${endpoint.CATEGORY_EDIT}${CategoryId}`;
+    const requestUrl = `${env.api}${endpoint.CATEGORY_EDIT}${CategoryId}`;
+    //const requestUrl = `/api/${endpoint.CATEGORY_EDIT}${CategoryId}`;
     return this._http.put(requestUrl, category).pipe(
       map((resp: BaseResponse) => {
         return resp;
@@ -74,8 +74,8 @@ export class CategoryService {
   }
 
   CategoryRemove(CategoryId: number): Observable<void> {
-    //const requestUrl = `${env.api}${endpoint.CATEGORY_REMOVE}${CategoryId}`;
-    const requestUrl = `/api/${endpoint.CATEGORY_REMOVE}${CategoryId}`;
+    const requestUrl = `${env.api}${endpoint.CATEGORY_REMOVE}${CategoryId}`;
+    //const requestUrl = `/api/${endpoint.CATEGORY_REMOVE}${CategoryId}`;
     return this._http.put(requestUrl, "").pipe(
       map((resp: BaseResponse) => {
         if (resp.isSuccess) {

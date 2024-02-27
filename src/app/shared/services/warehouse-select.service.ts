@@ -14,8 +14,8 @@ export class WarehouseSelectService {
   constructor(private _http: HttpClient) {}
 
   listSelectWarehouses(): Observable<SelectAutoComplete[]> {
-    //const requestUrl = `${env.api}${endpoint.LIST_SELECT_WAREHOUSES}`;
-    const requestUrl = `/api/${endpoint.LIST_SELECT_WAREHOUSES}`;
+    const requestUrl = `${env.api}${endpoint.LIST_SELECT_WAREHOUSES}`;
+    //const requestUrl = `/api/${endpoint.LIST_SELECT_WAREHOUSES}`;
     return this._http
       .get(requestUrl)
       .pipe(map((resp: BaseResponse) => resp.data));

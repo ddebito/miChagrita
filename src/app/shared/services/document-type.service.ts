@@ -14,8 +14,8 @@ export class DocumentTypeService {
   constructor(private _http: HttpClient) {}
 
   listDocumentTypes(): Observable<DocumentType[]> {
-    //const requestUrl = `${env.api}${endpoint.LIST_DOCUMENT_TYPES}`;
-    const requestUrl = `/api/${endpoint.LIST_DOCUMENT_TYPES}`;
+    const requestUrl = `${env.api}${endpoint.LIST_DOCUMENT_TYPES}`;
+    //const requestUrl = `/api/${endpoint.LIST_DOCUMENT_TYPES}`;
     return this._http.get(requestUrl).pipe(
       map((resp: BaseResponse) => {
         return resp.data;

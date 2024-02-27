@@ -27,8 +27,8 @@ export class ProductService {
     page: number,
     getInputs: string
   ): Observable<BaseResponse> {
-    //const requestUrl = `${env.api}${endpoint.LIST_PRODUCTS}?records=${size}&sort=${sort}&order=${order}&numPage=${page + 1}${getInputs}`;
-    const requestUrl = `/api/${endpoint.LIST_PRODUCTS}?records=${size}&sort=${sort}&order=${order}&numPage=${page + 1}${getInputs}`;
+    const requestUrl = `${env.api}${endpoint.LIST_PRODUCTS}?records=${size}&sort=${sort}&order=${order}&numPage=${page + 1}${getInputs}`;
+    //const requestUrl = `/api/${endpoint.LIST_PRODUCTS}?records=${size}&sort=${sort}&order=${order}&numPage=${page + 1}${getInputs}`;
     
     //debugger;
     return this._http
@@ -54,8 +54,8 @@ export class ProductService {
   }
 
   productById(productId: number): Observable<ProductByIdResponse> {
-    //const requestUrl = `${env.api}${endpoint.PRODUCT_BY_ID}${productId}`;
-    const requestUrl = `/api/${endpoint.PRODUCT_BY_ID}${productId}`;
+    const requestUrl = `${env.api}${endpoint.PRODUCT_BY_ID}${productId}`;
+    //const requestUrl = `/api/${endpoint.PRODUCT_BY_ID}${productId}`;
     return this._http.get(requestUrl).pipe(
       map((resp: BaseResponse) => {
         return resp.data;
@@ -64,8 +64,8 @@ export class ProductService {
   }
 
   productRegister(product: ProductRequest): Observable<BaseResponse> {
-    //const requestUrl = `${env.api}${endpoint.PRODUCT_REGISTER}`;
-    const requestUrl = `/api/${endpoint.PRODUCT_REGISTER}`;
+    const requestUrl = `${env.api}${endpoint.PRODUCT_REGISTER}`;
+    //const requestUrl = `/api/${endpoint.PRODUCT_REGISTER}`;
     const formDataProduct = this._builFormDataProduct(product);
     return this._http.post<BaseResponse>(requestUrl, formDataProduct);
   }
@@ -74,15 +74,15 @@ export class ProductService {
     productId: number,
     product: ProductRequest
   ): Observable<BaseResponse> {
-    //const requestUrl = `${env.api}${endpoint.PRODUCT_EDIT}${productId}`;
-    const requestUrl = `/api/${endpoint.PRODUCT_EDIT}${productId}`;
+    const requestUrl = `${env.api}${endpoint.PRODUCT_EDIT}${productId}`;
+    //const requestUrl = `/api/${endpoint.PRODUCT_EDIT}${productId}`;
     const formDataProduct = this._builFormDataProduct(product);
     return this._http.put<BaseResponse>(requestUrl, formDataProduct);
   }
 
   productRemove(productId: number): Observable<void> {
-    //const requestUrl = `${env.api}${endpoint.PRODUCT_REMOVE}${productId}`;
-    const requestUrl = `/api/${endpoint.PRODUCT_REMOVE}${productId}`;
+    const requestUrl = `${env.api}${endpoint.PRODUCT_REMOVE}${productId}`;
+    //const requestUrl = `/api/${endpoint.PRODUCT_REMOVE}${productId}`;
     return this._http.put(requestUrl, "").pipe(
       map((resp: BaseResponse) => {
         if (resp.isSuccess) {
@@ -95,8 +95,8 @@ export class ProductService {
   productStockByWarehouse(
     productId: number
   ): Observable<ProductStockWarehouseResponse[]> {
-    //const requestUrl = `${env.api}${endpoint.PRODUCT_STOCK_WAREHOUSE}${productId}`;
-    const requestUrl = `/api/${endpoint.PRODUCT_STOCK_WAREHOUSE}${productId}`;
+    const requestUrl = `${env.api}${endpoint.PRODUCT_STOCK_WAREHOUSE}${productId}`;
+    //const requestUrl = `/api/${endpoint.PRODUCT_STOCK_WAREHOUSE}${productId}`;
     return this._http.get(requestUrl).pipe(
       map((resp: BaseResponse) => {
         return resp.data;

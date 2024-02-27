@@ -56,8 +56,8 @@ export class AuthService {
 
   login(req: Login, authType: string): Observable<BaseResponse> {
     localStorage.setItem("authType", "Interno");
-    //const requestUrl = `${env.api}${endpoint.LOGIN}?authType=${authType}`;    
-    const requestUrl = `/api/Auth/Login?authType=Interno`;    
+    const requestUrl = `${env.api}${endpoint.LOGIN}?authType=${authType}`;    
+    //const requestUrl = `/api/Auth/Login?authType=Interno`;    
     return this.http.post<BaseResponse>(requestUrl, req, httpOptions).pipe(
       map((resp: BaseResponse) => {
         if (resp.isSuccess) {
@@ -76,8 +76,8 @@ export class AuthService {
   ): Observable<BaseResponse> {
     localStorage.setItem("authType", "Externo");
     //const requestUrl = `${env.api}${endpoint.LOGIN_GOOGLE}?authType=${authType}`;
-    //const requestUrl = `${endpoint.LOGIN_GOOGLE}?authType=${authType}`;
-    const requestUrl = `/api/${env.api}${endpoint.LOGIN_GOOGLE}?authType=${authType}`;    
+    const requestUrl = `${endpoint.LOGIN_GOOGLE}?authType=${authType}`;
+    //const requestUrl = `/api/${env.api}${endpoint.LOGIN_GOOGLE}?authType=${authType}`;    
     return this.http
       .post<BaseResponse>(requestUrl, JSON.stringify(credential), httpOptions)
       .pipe(

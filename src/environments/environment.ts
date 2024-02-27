@@ -6,5 +6,5 @@ export const environment = {
   //api: "https://localhost:7289/api/",
   filenameCsv: "dev-pos",
   //api: "http://ddebito-001-site1.ctempurl.com/api/"
-  api: "https://www.michagrita.somee.com"
+  api: "https://www.michagrita.somee.com/api/"
 };

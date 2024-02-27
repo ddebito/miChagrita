@@ -26,7 +26,7 @@ export class WarehouseService {
     page: number,
     getInputs: string
   ): Observable<BaseResponse> {
-    const requestUrl = `/api/${
+    const requestUrl = `${env.api}${
       endpoint.LIST_WAREHOUSES
     }?records=${size}&sort=${sort}&order=${order}&numPage=${
       page + 1
@@ -54,8 +54,8 @@ export class WarehouseService {
   }
 
   warehouseById(warehouseId: number): Observable<WarehouseByIdResponse> {
-    //const requestUrl = `${env.api}${endpoint.WAREHOUSE_BY_ID}${warehouseId}`;
-    const requestUrl = `/api/${endpoint.WAREHOUSE_BY_ID}${warehouseId}`;
+    const requestUrl = `${env.api}${endpoint.WAREHOUSE_BY_ID}${warehouseId}`;
+    //const requestUrl = `/api/${endpoint.WAREHOUSE_BY_ID}${warehouseId}`;
 
     return this._http.get(requestUrl).pipe(
       map((resp: BaseResponse) => {
@@ -65,8 +65,8 @@ export class WarehouseService {
   }
 
   warehouseRegister(warehouse: WarehouseRequest): Observable<BaseResponse> {
-    //const requestUrl = `${env.api}${endpoint.WAREHOUSE_REGISTER}`;
-    const requestUrl = `/api/${endpoint.WAREHOUSE_REGISTER}`;
+    const requestUrl = `${env.api}${endpoint.WAREHOUSE_REGISTER}`;
+    //const requestUrl = `/api/${endpoint.WAREHOUSE_REGISTER}`;
     return this._http.post<BaseResponse>(requestUrl, warehouse);
   }
 
@@ -74,15 +74,15 @@ export class WarehouseService {
     warehouseId: number,
     warehouse: WarehouseRequest
   ): Observable<BaseResponse> {
-//    const requestUrl = `${env.api}${endpoint.WAREHOUSE_EDIT}${warehouseId}`;
-    const requestUrl = `/api/${endpoint.WAREHOUSE_EDIT}${warehouseId}`;
+    const requestUrl = `${env.api}${endpoint.WAREHOUSE_EDIT}${warehouseId}`;
+    //const requestUrl = `/api/${endpoint.WAREHOUSE_EDIT}${warehouseId}`;
 
     return this._http.put<BaseResponse>(requestUrl, warehouse);
   }
 
   warehouseRemove(warehouseId: number): Observable<void> {
-    //const requestUrl = `${env.api}${endpoint.WAREHOUSE_REMOVE}${warehouseId}`;
-    const requestUrl = `/api/${endpoint.WAREHOUSE_REMOVE}${warehouseId}`;
+    const requestUrl = `${env.api}${endpoint.WAREHOUSE_REMOVE}${warehouseId}`;
+    //const requestUrl = `/api/${endpoint.WAREHOUSE_REMOVE}${warehouseId}`;
 
     return this._http.put(requestUrl, "").pipe(
       map((resp: BaseResponse) => {

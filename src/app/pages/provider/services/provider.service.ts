@@ -26,11 +26,7 @@ export class ProviderService {
     page: number,
     getInputs: string
   ): Observable<BaseResponse> {
-    const requestUrl = `/api/${
-      endpoint.LIST_PROVIDERS
-    }?records=${size}&sort=${sort}&order=${order}&numPage=${
-      page + 1
-    }${getInputs}`;
+    const requestUrl = `${env.api}${endpoint.LIST_PROVIDERS}?records=${size}&sort=${sort}&order=${order}&numPage=${page + 1}${getInputs}`;
 
     return this._http.get<BaseResponse>(requestUrl).pipe(
       map((resp: BaseResponse) => {
@@ -55,8 +51,8 @@ export class ProviderService {
   }
 
   providerById(providerId: number): Observable<ProviderById> {
-    //const requestUrl = `${env.api}${endpoint.PROVIDER_BY_ID}${providerId}`;
-    const requestUrl = `/api/${endpoint.PROVIDER_BY_ID}${providerId}`;
+    const requestUrl = `${env.api}${endpoint.PROVIDER_BY_ID}${providerId}`;
+    //const requestUrl = `/api/${endpoint.PROVIDER_BY_ID}${providerId}`;
     return this._http.get(requestUrl).pipe(
       map((resp: BaseResponse) => {
         return resp.data;
@@ -65,8 +61,8 @@ export class ProviderService {
   }
 
   providerRegister(provider: ProviderRequest): Observable<BaseResponse> {
-    //const requestUrl = `${env.api}${endpoint.PROVIDER_REGISTER}`;
-    const requestUrl = `/api/${endpoint.PROVIDER_REGISTER}`;
+    const requestUrl = `${env.api}${endpoint.PROVIDER_REGISTER}`;
+    //const requestUrl = `/api/${endpoint.PROVIDER_REGISTER}`;
     return this._http.post(requestUrl, provider).pipe(
       map((resp: BaseResponse) => {
         return resp;
@@ -78,14 +74,14 @@ export class ProviderService {
     providerId: number,
     provider: ProviderRequest
   ): Observable<BaseResponse> {
-    //const requestUrl = `${env.api}${endpoint.PROVIDER_EDIT}${providerId}`;
-    const requestUrl = `/api/${endpoint.PROVIDER_EDIT}${providerId}`;
+    const requestUrl = `${env.api}${endpoint.PROVIDER_EDIT}${providerId}`;
+    //const requestUrl = `/api/${endpoint.PROVIDER_EDIT}${providerId}`;
     return this._http.put<BaseResponse>(requestUrl, provider);
   }
 
   providerRemove(providerId: number): Observable<void> {
-    //const requestUrl = `${env.api}${endpoint.PROVIDER_REMOVE}${providerId}`;
-    const requestUrl = `/api/${endpoint.PROVIDER_REMOVE}${providerId}`;
+    const requestUrl = `${env.api}${endpoint.PROVIDER_REMOVE}${providerId}`;
+    //const requestUrl = `/api/${endpoint.PROVIDER_REMOVE}${providerId}`;
     return this._http.put(requestUrl, "").pipe(
       map((resp: BaseResponse) => {
         if (resp.isSuccess) {

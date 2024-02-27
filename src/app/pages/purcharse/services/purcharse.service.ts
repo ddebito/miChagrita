@@ -26,11 +26,7 @@ export class PurcharseService {
     page: number,
     getInputs: string
   ): Observable<BaseResponse> {
-    const requestUrl = `/api/${
-      endpoint.LIST_PURCHARSES
-    }?records=${size}&sort=${sort}&order=${order}&numPage=${
-      page + 1
-    }${getInputs}`;
+    const requestUrl = `${env.api}${endpoint.LIST_PURCHARSES}?records=${size}&sort=${sort}&order=${order}&numPage=${page + 1}${getInputs}`;
 
     return this._http
       .get<BaseResponse>(requestUrl)
@@ -51,8 +47,8 @@ export class PurcharseService {
   }
 
   purcharseById(purcharseId: number): Observable<PurcharseByIdResponse> {
-    //const requestUrl = `${env.api}${endpoint.PURCHARSE_BY_ID}${purcharseId}`;
-    const requestUrl = `/api/${endpoint.PURCHARSE_BY_ID}${purcharseId}`;
+    const requestUrl = `${env.api}${endpoint.PURCHARSE_BY_ID}${purcharseId}`;
+    //const requestUrl = `/api/${endpoint.PURCHARSE_BY_ID}${purcharseId}`;
     return this._http.get(requestUrl).pipe(
       map((resp: BaseResponse) => {
         return resp.data;
@@ -61,14 +57,14 @@ export class PurcharseService {
   }
 
   purcharseRegister(purcharse: PurcharseRequest) {
-    //const requestUrl = `${env.api}${endpoint.PURCHARSE_REGISTER}`;
-    const requestUrl = `/api/${endpoint.PURCHARSE_REGISTER}`;
+    const requestUrl = `${env.api}${endpoint.PURCHARSE_REGISTER}`;
+    //const requestUrl = `/api/${endpoint.PURCHARSE_REGISTER}`;
     return this._http.post<BaseResponse>(requestUrl, purcharse);
   }
 
   purcharseCancel(purcharseId: number): Observable<void> {
-    //const requestUrl = `${env.api}${endpoint.PURCHARSE_CANCEL}${purcharseId}`;
-    const requestUrl = `/api/${endpoint.PURCHARSE_CANCEL}${purcharseId}`;
+    const requestUrl = `${env.api}${endpoint.PURCHARSE_CANCEL}${purcharseId}`;
+    //const requestUrl = `/api/${endpoint.PURCHARSE_CANCEL}${purcharseId}`;
     return this._http.put(requestUrl, "").pipe(
       map((resp: BaseResponse) => {
         if (resp.isSuccess) {
